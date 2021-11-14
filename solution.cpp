@@ -45,7 +45,7 @@ void Solution::insert_naively(Job &job)
 		schedule[machine_number].push_back(ma);
 		finish_times[machine_number].second = ma.end_t;
 
-		job_assignments.at(job.id).machines.push_back(machine_number);
+		job_assignments.at(job.id).machines.insert(machine_number);
 	}
 }
 

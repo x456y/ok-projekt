@@ -2,6 +2,7 @@
 #define TYPES_H
 
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -29,7 +30,7 @@ typedef struct
 
 typedef struct
 {
-	vector<int> machines;
+	set<int> machines;
 	int start_t;
 	int end_t;
 } job_assignment;

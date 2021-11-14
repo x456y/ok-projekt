@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 
 #include "util.h"
 
@@ -39,7 +40,7 @@ Problem *parse_file(string filename)
 	while (!input.eof())
 	{
 		getline(input, line);
-		if (line.find("MaxProcs") != string::npos)
+		if (line.find("MaxProcs: ") != string::npos)
 		{
 			problem->m = stoi(line.substr(12));
 			problem->jobs.reserve(problem->m);
@@ -52,8 +53,8 @@ Problem *parse_file(string filename)
 		vector<string> tokens = tokenize(line, 5);
 		Job a_job;
 		a_job.id = stoi(tokens[0]);
-		a_job.p = stoi(tokens[1]);
-		a_job.r = stoi(tokens[3]);
+		a_job.r = stoi(tokens[1]);
+		a_job.p = stoi(tokens[3]);
 		a_job.size = stoi(tokens[4]);
 		if (a_job.r < 0 || a_job.p <= 0 || a_job.size <= 0)
 		{

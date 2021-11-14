@@ -51,5 +51,7 @@ int main(int argc, char **argv)
 	srand(time(NULL));
 	Problem *problem = parse_file(argv[1]);
 
-	simulated_annealing(problem, 1000, 0.6, 300);
+	Solution *solution = generate_initial_solution(problem);
+	cout << "C max: " << solution->calculate_c_max() << endl;
+	solution->print_result();
 }
