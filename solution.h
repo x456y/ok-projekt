@@ -43,7 +43,7 @@ public:
 	void print_result();
 
 	//oblicza funkcje celu
-	int calculate_c_max();
+	unsigned long long calculate_c_max();
 
 	Solution *perturbate();
 };

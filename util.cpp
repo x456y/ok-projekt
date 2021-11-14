@@ -88,3 +88,7 @@ bool compare_pairs_by_second(pair<int, int> &p1, pair<int, int> &p2)
 {
 	return p1.second < p2.second;
 }
+
+void shuffle_jobs(vector<Job> &jobs, int left, int right)
+{
+}

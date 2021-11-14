@@ -34,6 +34,10 @@ void Solution::insert_naively(Job &job)
 		job_assignments.at(job.id).start_t = insert_time;
 		job_assignments.at(job.id).end_t = insert_time + job.p;
 	}
+	else
+	{
+		cout << "duplicate inserted" << endl;
+	}
 
 	for (int i = 0; i < job.size; i++)
 	{
@@ -62,9 +66,9 @@ void Solution::print_result()
 	}
 }
 
-int Solution::calculate_c_max()
+unsigned long long Solution::calculate_c_max()
 {
-	int c_max = 0;
+	unsigned long long c_max = 0;
 	for (auto entry : job_assignments)
 	{
 		c_max += entry.second.end_t;
