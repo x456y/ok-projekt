@@ -23,7 +23,7 @@ vector<string> tokenize(string s, int max_token_count)
 	return tokens;
 }
 
-Problem *parse_file(string filename)
+Problem *parse_file(string filename, int max_jobs = 0)
 {
 	ifstream input;
 	Problem *problem = new Problem;
@@ -61,6 +61,10 @@ Problem *parse_file(string filename)
 			continue;
 		}
 		problem->jobs.push_back(a_job);
+		if (max_jobs >= 0 && problem->jobs.size() >= max_jobs)
+		{
+			break;
+		}
 	}
 
 	problem->n = problem->jobs.size();
@@ -84,11 +88,39 @@ bool compare_jobs_1(const Job &j1, const Job &j2)
 	}
 }
 
+bool compare_jobs_2(const Job &j1, const Job &j2)
+{
+	if (j1.size * j1.p > j2.size * j2.p)
+	{
+		return true;
+	}
+	else if (j1.size * j1.p < j2.size * j2.p)
+	{
+		return false;
+	}
+	else
+	{
+		return j1.r < j2.r;
+	}
+}
+
+bool compare_jobs_3(const Job &j1, const Job &j2)
+{
+	if (j1.size > j2.size)
+	{
+		return true;
+	}
+	else if (j1.size < j2.size)
+	{
+		return false;
+	}
+	else
+	{
+		return j1.r < j2.r;
+	}
+}
+
 bool compare_pairs_by_second(pair<int, int> &p1, pair<int, int> &p2)
 {
 	return p1.second < p2.second;
-}
-
-void shuffle_jobs(vector<Job> &jobs, int left, int right)
-{
 }
