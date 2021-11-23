@@ -34,6 +34,7 @@ main
 
 #Data files
 *.swf
+*.txt
 
 #Configuration files
 .vscode

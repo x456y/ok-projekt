@@ -23,7 +23,7 @@ vector<string> tokenize(string s, int max_token_count)
 	return tokens;
 }
 
-Problem *parse_file(string filename, int max_jobs = 0)
+Problem *parse_file(string filename, int max_jobs)
 {
 	ifstream input;
 	Problem *problem = new Problem;
@@ -42,7 +42,7 @@ Problem *parse_file(string filename, int max_jobs = 0)
 		getline(input, line);
 		if (line.find("MaxProcs: ") != string::npos)
 		{
-			problem->m = stoi(line.substr(12));
+			problem->m = stoi(line.substr(line.find(":")+2));
 			problem->jobs.reserve(problem->m);
 		}
 		if (line == "" || line[0] == ';')
@@ -84,7 +84,7 @@ bool compare_jobs_1(const Job &j1, const Job &j2)
 	}
 	else
 	{
-		return j1.size * j2.p > j2.size * j2.p;
+		return j1.size * j1.p > j2.size * j2.p;
 	}
 }
 

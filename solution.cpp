@@ -34,10 +34,6 @@ void Solution::insert_naively(Job &job)
 		job_assignments.at(job.id).start_t = insert_time;
 		job_assignments.at(job.id).end_t = insert_time + job.p;
 	}
-	else
-	{
-		cout << "duplicate inserted" << endl;
-	}
 
 	for (int i = 0; i < job.size; i++)
 	{

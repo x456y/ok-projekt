@@ -71,7 +71,6 @@ Solution *grasp(Problem *problem, int k, int time_limit = 300)
 		{
 			int j = min(i + k - 1, (int)problem->jobs.size() - 1);
 			shuffle(problem->jobs.begin() + i, problem->jobs.begin() + j, rng);
-			//cout << "i: " << i << " j: " << j << endl;
 			for (int l = i; l <= j; l++)
 			{
 				candidate->insert_naively((problem->jobs.at(l)));
@@ -100,17 +99,14 @@ int main(int argc, char **argv)
 	srand(time(NULL));
 
 	//brak ograniczeina na liczbe wczytywanych zadan
-	int max_jobs = 0;
+	int max_jobs = -1;
 	if (argc > 2)
 	{
 		max_jobs = stoi(argv[2]);
 	}
 	Problem *problem = parse_file(argv[1], max_jobs);
 
-	Solution *solution = grasp(problem, 100, 300);
-	cout << "C max: " << solution->calculate_c_max() << endl;
-	//solution->print_result();
+	//Tu wchodzi kod
 
 	delete problem;
-	delete solution;
 }
